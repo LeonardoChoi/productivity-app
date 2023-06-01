@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import DailyGoal from "./component/DailyGoal";
+import GoalsList from "./component/GoalsList";
 
 const App = () => {
   const [dailyGoals, setDailyGoal] = useState([]);
 
-  const createDailyGoal = (newGoal) => {
+  const createDailyGoal = ({ goalTitle, goalHours }) => {
     const updatedGoal = [
       ...dailyGoals,
       {
         id: Math.floor(Math.random() * 9999),
-        name: newGoal,
+        goalTitle,
+        goalHours,
       },
     ];
     setDailyGoal(updatedGoal);
@@ -22,6 +24,7 @@ const App = () => {
   return (
     <div>
       <DailyGoal onCreate={createDailyGoal} />
+      <GoalsList dailyGoals={dailyGoals} />
     </div>
   );
 };
