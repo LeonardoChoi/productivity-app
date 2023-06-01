@@ -1,39 +1,44 @@
 import React, { useState } from "react";
 
-const DailyGoal = () => {
-  const [dailyGoal, setDailyGoal] = useState("");
+const DailyGoal = ({ onCreate }) => {
+  const [newGoal, setNewGoal] = useState({
+    goalName: "",
+    hoursPerDay: 0,
+  });
 
   const handleChange = (event) => {
-    setDailyGoal(event.target.value);
+    const { name, value } = event.target;
+    setNewGoal((prev) => {
+      return { ...prev, [name]: value };
+    });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createDailyGoal(dailyGoal);
-    setDailyGoal("");
-  };
-
-  const createDailyGoal = (dailyGoal) => {
-    const updatedGoal = [
-      ...dailyGoal,
-      {
-        id: Math.floor(Math.random() * 9999),
-        name: dailyGoal,
-      },
-    ];
-    setDailyGoal(updatedGoal);
+    onCreate(newGoal);
+    setNewGoal({
+      goalName: "",
+      hoursPerDay: 0,
+    });
   };
 
   return (
     <div>
-      <div className="createDailyGoal">
+      <form onSubmit={handleSubmit}>
+        <label>New Goal Name</label>
+        <input type="text" onChange={handleChange} name="goalName" />
+        <label>Hours per day</label>
+        <input type="number" onChange={handleChange} name="hoursPerDay" />
+        <button>Add</button>
+      </form>
+      {/* <div className="createDailyGoal">
         <h3>Create a New Daily Goal!</h3>
         <form onSubmit={handleSubmit}>
           <label>Daily Goal</label>
           <input className="input" onChange={handleChange} value={dailyGoal} />
           <button className="button">Create!</button>
         </form>
-      </div>
+      </div> */}
     </div>
   );
 };
