@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const DailyGoal = ({ onCreate }) => {
+const WeeklyGoal = ({ onCreate }) => {
   const [goalTitle, setGoalTitle] = useState("");
   const [goalHours, setGoalHours] = useState("");
 
@@ -39,4 +39,4 @@ const DailyGoal = ({ onCreate }) => {
   );
 };
 
-export default DailyGoal;
+export default WeeklyGoal;

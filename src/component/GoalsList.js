@@ -1,8 +1,8 @@
 import React from "react";
 import ShowGoal from "./ShowGoal";
 
-function GoalsList({ dailyGoals }) {
-  const renderedGoals = dailyGoals.map((goal) => {
+function GoalsList({ weeklyGoal }) {
+  const renderedGoals = weeklyGoal.map((goal) => {
     return <ShowGoal key={goal.id} goal={goal} />;
   });
 
