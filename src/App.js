@@ -24,7 +24,7 @@ const App = () => {
   return (
     <div>
       <WeeklyGoal onCreate={createWeeklyGoal} />
-      <GoalsList dailyGoals={weeklyGoal} />
+      <GoalsList weeklyGoal={weeklyGoal} />
     </div>
   );
 };
