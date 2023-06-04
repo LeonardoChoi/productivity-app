@@ -3,6 +3,7 @@ import WeeklyGoal from "./component/WeeklyGoal";
 import GoalsList from "./component/GoalsList";
 
 const App = () => {
+  // refactor it with a real server and axios
   const [weeklyGoal, setWeeklyGoal] = useState([]);
 
   const createWeeklyGoal = ({ goalTitle, goalHours }) => {
