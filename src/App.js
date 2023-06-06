@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import WeeklyGoal from "./component/WeeklyGoal";
 import GoalsList from "./component/GoalsList";
@@ -6,16 +7,16 @@ const App = () => {
   // refactor it with a real server and axios
   const [weeklyGoal, setWeeklyGoal] = useState([]);
 
-  const createWeeklyGoal = ({ goalTitle, goalHours }) => {
-    const updatedGoal = [
-      ...weeklyGoal,
-      {
-        id: Math.floor(Math.random() * 9999),
-        goalTitle,
-        goalHours,
-      },
-    ];
-    setWeeklyGoal(updatedGoal);
+  const fetchGoals = 
+
+  const createWeeklyGoal = async (goalTitle, goalHours) => {
+    const response = await axios.post("http://localhost:3001/goals", {
+      goalTitle,
+      goalHours,
+    });
+
+    const updatedGoals = [...weeklyGoal, response.data];
+    setWeeklyGoal(updatedGoals);
   };
 
   useEffect(() => {

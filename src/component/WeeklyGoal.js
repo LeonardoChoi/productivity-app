@@ -7,13 +7,14 @@ const WeeklyGoal = ({ onCreate }) => {
   const handleTitleChange = (e) => {
     setGoalTitle(e.target.value);
   };
+
   const handleHoursChange = (e) => {
     setGoalHours(e.target.value);
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const finishedNewGoal = { goalTitle, goalHours };
-    onCreate(finishedNewGoal);
+    onCreate(goalTitle, goalHours);
     setGoalTitle("");
     setGoalHours("");
   };
