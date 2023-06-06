@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import WeeklyGoal from "./WeeklyGoal";
 
-function ShowGoal({ goal }) {
+function ShowGoal({ goal, deleteGoalById }) {
   const [accomplishedHours, setAccomplishedHours] = useState("");
   const [totalAccHours, setTotalAccHours] = useState(0);
 
@@ -21,6 +22,11 @@ function ShowGoal({ goal }) {
     totalAccHoursFunction(accomplishedHours);
     setAccomplishedHours("");
   };
+
+  const handleDelete = () => {
+    deleteGoalById(goal.id);
+  };
+
   return (
     <div>
       <h1>Goal: {goal.goalTitle}</h1>
@@ -35,6 +41,7 @@ function ShowGoal({ goal }) {
           onChange={handleChange}
         />
         <button>Add </button>
+        <button onClick={handleDelete}>Delete Goal</button>
       </form>
     </div>
   );
