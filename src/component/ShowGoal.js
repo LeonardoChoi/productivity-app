@@ -8,6 +8,8 @@ function ShowGoal({ goal, deleteGoalById }) {
   // const changeHours = (e) => {
   //   // const updatedHours = accomplishedHours + e.target.value;
   // };
+  //Add accordion list to show details of a goal here. Use .map function and inline event handlers as well as the arrow icons
+
   const totalAccHoursFunction = (hours) => {
     const updatedHours = parseFloat(totalAccHours) + parseFloat(hours);
     setTotalAccHours(updatedHours);
@@ -40,7 +42,7 @@ function ShowGoal({ goal, deleteGoalById }) {
           value={accomplishedHours}
           onChange={handleChange}
         />
-        <button>Add </button>
+        <button>Add Goal</button>
         <button onClick={handleDelete}>Delete Goal</button>
       </form>
     </div>

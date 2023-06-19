@@ -11,10 +11,12 @@ const App = () => {
     const response = await axios.get("http://localhost:3001/weeklyGoal");
     setWeeklyGoal(response.data);
   }, []);
+  //useCallback stops the fetch function from keep fetching and looping infinetly.
 
   useEffect(() => {
     fetchWeeklyGoals();
   }, [fetchWeeklyGoals]);
+  //useEffect rerenders everytime the fetchWeeklyGoals variable inside the [] changes
 
   const createWeeklyGoal = async (goalTitle, goalHours) => {
     const response = await axios.post("http://localhost:3001/weeklyGoal", {
